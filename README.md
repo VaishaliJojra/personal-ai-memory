@@ -1,4 +1,5 @@
 # 🧠 Personal AI Memory
+![Python Tests](https://github.com/VaishaliJojra/personal-ai-memory/actions/workflows/python-tests.yml/badge.svg)
 
 A lightweight personal AI assistant that can **remember previous conversations and retrieve relevant memories** using completely local AI models.
 
