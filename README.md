@@ -61,20 +61,26 @@ Ollama
 
 ## 📁 Project Structure
 
-```text
 personal-ai-memory/
 │
-├── app.py              # Main chat application
-├── memory.py           # Memory storage and retrieval
-├── config.py           # Environment configuration
-├── requirements.txt    # Python dependencies
-├── README.md           # Project documentation
-├── .gitignore          # Files excluded from Git
+├── app.py                    # Main chat application
+├── memory.py                 # Memory storage and retrieval
+├── settings.py               # Model configuration
+├── requirements.txt          # Python dependencies
+├── README.md                 # Project documentation
+├── .gitignore                # Files excluded from Git
 │
-├── data/               # Local Qdrant database (not uploaded)
-├── .venv/              # Python virtual environment (not uploaded)
-└── .env                # Local environment variables (not uploaded)
-```
+├── tests/
+│   ├── __init__.py           # Test package
+│   └── test_settings.py      # Settings tests
+│
+├── .github/
+│   └── workflows/
+│       └── python-tests.yml  # GitHub Actions CI
+│
+├── data/                     # Local Qdrant database (not uploaded)
+├── .venv/                    # Python virtual environment (not uploaded)
+└── .env                      # Local environment variables (not uploaded)
 
 ## ⚙️ How It Works
 
