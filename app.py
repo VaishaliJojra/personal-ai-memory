@@ -1,6 +1,6 @@
 import ollama
 from memory import add_memory, search_memory
-
+from settings import MODEL_NAME
 
 USER_ID = "user_1"
 
@@ -28,7 +28,7 @@ User's new message:
 
     # Ask Ollama for a response
     response = ollama.chat(
-        model="qwen2.5:0.5b",
+        model=MODEL_NAME,
         messages=[
             {
                 "role": "user",
@@ -61,7 +61,6 @@ if __name__ == "__main__":
 
         # Exit the program
         if user_message.lower() == "quit":
-            close_memory()
             break
 
         answer = chat(user_message)
