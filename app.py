@@ -6,17 +6,18 @@ USER_ID = "user_1"
 
 
 def chat(user_message):
-    # Find relevant memories
-    memories = search_memory(USER_ID, user_message)
+    try:
+        # Find relevant memories
+        memories = search_memory(USER_ID, user_message)
 
-    # Convert memories into text
-    memory_text = "\n".join(
-        memory["memory"]
-        for memory in memories["results"]
-    )
+        # Convert memories into text
+        memory_text = "\n".join(
+            memory["memory"]
+            for memory in memories["results"]
+        )
 
-    # Give the AI the memories as context
-    prompt = f"""
+        # Give the AI the memories as context
+        prompt = f"""
 You are a helpful personal AI assistant.
 
 Here are some things you remember about the user:
@@ -26,26 +27,30 @@ User's new message:
 {user_message}
 """
 
-    # Ask Ollama for a response
-    response = ollama.chat(
-        model=MODEL_NAME,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
+        # Ask Ollama for a response
+        response = ollama.chat(
+            model=MODEL_NAME,
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
+        )
 
-    answer = response["message"]["content"]
+        answer = response["message"]["content"]
 
-    # Save the conversation as memory
-    add_memory(
-        USER_ID,
-        f"User said: {user_message}\nAssistant replied: {answer}"
-    )
+        # Save the conversation as memory
+        add_memory(
+            USER_ID,
+            f"User said: {user_message}\nAssistant replied: {answer}"
+        )
 
-    return answer
+        return answer
+
+    except Exception as error:
+        print(f"\n❌ Something went wrong: {error}")
+        return None
 
 
 if __name__ == "__main__":
